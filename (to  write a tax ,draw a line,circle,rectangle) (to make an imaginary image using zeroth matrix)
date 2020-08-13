@@ -1,0 +1,26 @@
+import numpy as np
+import cv2
+#img=cv2.imread("cuty.jpg",1)
+
+img=np.zeros([232,342,3],np.uint8)
+
+resized_image=cv2.resize(img,(500,650))
+
+resized_image=cv2.line(resized_image,(0,320),(500,320),(0,0,255),2)
+
+#resized_image=cv2.rectangle(resized_image, (100,400), (390,600), (45,55,44),2)
+#resized_image=cv2.rectangle(resized_image, (150,550), (160,560), (0,0,0),-1)
+#resized_image=cv2.rectangle(resized_image, (330,550), (340,560), (0,0,0),-1)
+
+#resized_image=cv2.circle(resized_image, (155,555), 1, (250,250,250),-1)
+#resized_image=cv2.circle(resized_image, (335,555), 1, (250,250,250),-1)
+
+font=cv2.FONT_HERSHEY_SIMPLEX
+resized_image=cv2.putText(resized_image,' cuty', (43,555), font, 4, (240,130,58),10,cv2.LINE_AA)
+
+cv2.imshow("image",resized_image)
+
+print(img)
+print(img.shape)
+cv2.waitKey(0)
+cv2.destroyAllWindows()   
