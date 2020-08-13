@@ -1,0 +1,30 @@
+import cv2
+import numpy as np
+
+
+
+
+img=cv2.imread('football.jpg')
+img2=cv2.imread('cuty.jpg')
+
+print(img.shape)
+print(img.size)
+print(img.dtype)
+b,g,r=cv2.split(img)
+img=cv2.merge((b,g,r))
+
+#difference b/w 90:290 and 354:554 && 120:280 and 121:281 must be same 
+ball=img[90:290,120:280]    #90 is starting point and 290 is anding cordinate on y axis,and 120 is starting point and 280 is anding cordinate on x axis 
+img[354:554,121:281]=ball   #354 is starting point and 554 is anding cordinate on y axis,and 121 is starting point and 281 is anding cordinate on x axis 
+
+resized_image=cv2.resize(img,(600,600))
+resized_image2=cv2.resize(img2,(600,600))
+
+#dat=cv2.add(resized_image,resized_image2)
+dat=cv2.addWeighted(resized_image,.5,resized_image2,.5,0)
+
+
+#resized_image=cv2.resize(img,(600,400))
+cv2.imshow("image",dat)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
